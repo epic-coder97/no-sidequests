@@ -1,0 +1,42 @@
+{
+  "name": "no-sidequests",
+  "version": "1.0.0",
+  "description": "Install No Sidequests, a distraction-free AI learning skill.",
+  "license": "MIT",
+  "author": "epic-coder97",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epic-coder97/no-sidequests.git"
+  },
+  "homepage": "https://github.com/epic-coder97/no-sidequests#readme",
+  "bugs": {
+    "url": "https://github.com/epic-coder97/no-sidequests/issues"
+  },
+  "bin": {
+    "no-sidequests": "./bin/no-sidequests.js"
+  },
+  "files": [
+    "bin",
+    "SKILL.md",
+    "agents",
+    "examples",
+    "patterns",
+    "references",
+    "rubrics",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "ai",
+    "agent-skills",
+    "learning",
+    "ai-tutor",
+    "codex",
+    "claude",
+    "opencode",
+    "gemini"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}
