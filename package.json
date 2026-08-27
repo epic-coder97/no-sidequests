@@ -13,8 +13,8 @@
     "url": "https://github.com/epic-coder97/no-sidequests/issues"
   },
   "bin": {
-    "no-sidequests": "./bin/no-sidequests.js"
-  },
+  "no-sidequests": "bin/no-sidequests.js"
+},
   "files": [
     "bin",
     "SKILL.md",
