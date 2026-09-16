@@ -4,6 +4,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/no-sidequests.svg)](https://www.npmjs.com/package/no-sidequests)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Agent Skill](https://img.shields.io/badge/Agent%20Skill-compatible-brightgreen.svg)](https://agentskills.io/)
+[![skills.sh](https://skills.sh/b/epic-coder97/no-sidequests)](https://skills.sh/epic-coder97/no-sidequests)
 
 > **Learn one thing at a time. No sidequests.**
 
