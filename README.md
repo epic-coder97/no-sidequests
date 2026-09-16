@@ -57,6 +57,14 @@ That's it.
 
 Start a new session in your AI tool and ask it to teach you something.
 
+### Install with skills.sh
+
+If you use the `skills` CLI, you can install directly from GitHub:
+
+```bash
+npx skills add epic-coder97/no-sidequests
+```
+
 ---
 
 ## What does the npm installer do?
