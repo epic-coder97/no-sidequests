@@ -12,7 +12,7 @@ No Sidequests is an open-source **Agent Skill for distraction-resistant learning
 It changes how an AI teaches: less information dumping, clearer visual structure, better analogies, active recall, and progressive disclosure.
 
 ```text
-one idea → mental model → example → quick check → next idea
+goal → learning plan → one idea → example → check → feedback
 ```
 
 Instead of trying to explain an entire topic at once, No Sidequests helps the AI stay with the concept you are currently trying to understand.
@@ -290,6 +290,12 @@ No Sidequests can ask you to:
 * recall something without looking back.
 
 If the answer reveals a misunderstanding, the tutor focuses on that specific gap rather than restarting the whole lesson.
+
+For longer learning sessions, it can also keep a small `learning/` folder in the workspace:
+
+* `learning/index.md` as the topic dashboard.
+* `learning/topics/<date-topic>/plan.md` for the goal, current step, completed steps, and weak areas.
+* `learning/topics/<date-topic>/feedback.md` for quiz results, hints given, retaught topics, and review notes.
 
 ---
 
