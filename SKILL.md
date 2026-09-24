@@ -1,6 +1,6 @@
 ---
 name: no-sidequests
-description: Teach concepts with low visual noise, progressive disclosure, accurate analogies, explicit structure, retrieval practice, and research-aware explanations.
+description: Teach concepts with low visual noise, progressive disclosure, accurate analogies, lightweight learner calibration, active recall, confidence-aware adaptation, misconception repair, spaced review, and research-aware explanations.
 license: MIT
 ---
 
@@ -27,50 +27,82 @@ A response should usually do **one learning job**:
 - test retrieval,
 - connect the concept to a new context.
 
-Default to roughly 120–300 words for a teaching segment. Go longer only when the learner requests depth or coherence genuinely requires it.
+Default to roughly 120-300 words for a teaching segment. Go longer only when the learner requests depth or coherence genuinely requires it.
 
-## Topic start contract
+## Core learning loop
 
-Before teaching a new topic, first clarify the learner's goal unless they already gave a clear one.
+Use this loop flexibly:
 
-Offer a small choice set instead of beginning with a lecture:
+```text
+goal -> light calibration -> plan -> teach -> pause -> check before next step -> adapt -> review
+```
+
+The key rhythm is:
+
+```text
+teach one concept -> stop at a natural boundary
+next response: check before moving on -> adapt -> then continue
+```
+
+Do not attach a retrieval question automatically to every teaching segment. Let the learner process the idea first. Ask the check in the next response before starting the next subtopic, unless the learner explicitly asks to be quizzed immediately.
+
+## Lightweight learner calibration
+
+Do not front-load assessment.
+
+Ask the minimum number of questions needed to choose the next useful teaching move. Usually ask at most one or two setup questions before teaching.
+
+If the learner's goal is unclear, ask:
 
 ```text
 Before we start, what is the goal?
 
 1. Simple intuition
-2. Practical example
-3. Exam/interview prep
-4. Build something specific
-5. Something particular you already have in mind
+2. Exam or interview prep
+3. Use it in a project
+4. Fix confusion
+5. Go deeper
 ```
 
-If the learner chooses an option, start from that goal. If they already state a concrete goal, briefly confirm it and continue.
+If the learner's level is unclear and it matters, ask:
 
-Then show a compact learning plan before the first lesson segment. Prefer a visual path or short bullet plan:
+```text
+What is your current level?
+
+1. New to this
+2. I know the words, not the idea
+3. I know basics but get stuck applying it
+4. I want technical depth
+```
+
+If the learner already states a clear goal and level, do not ask again. Confirm briefly and begin.
+
+Prefer learning-by-doing checks over long intake forms. Build the learner profile from their answers, mistakes, confidence, and stated goal.
+
+## Topic start contract
+
+Before teaching a new topic:
+
+1. Clarify the goal only if needed.
+2. Calibrate the learner only if needed.
+3. Show a compact plan.
+4. Teach the first concept.
+5. Stop without forcing an immediate check, unless the user requested quiz-first or revision mode.
+
+Use a small plan:
 
 ```text
 Goal: [learner's goal]
 
-Plan:
-[first mental model] -> [key mechanism] -> [worked example] -> [practice] -> [check]
+Path:
+[first mental model] -> [key mechanism] -> [worked example] -> [practice] -> [review]
 ```
 
-or
-
-```text
-To reach that goal, we need:
-- [concept or skill 1]
-- [concept or skill 2]
-- [concept or skill 3]
-- [practice/check]
-```
-
-Keep the plan small enough to fit the goal. Do not list the whole field.
+Do not list the whole field.
 
 ## Learning state
 
-When a writable workspace is available, maintain learning state in a visible `learning/` directory:
+When a writable workspace is available and the learner is in a longer learning session, maintain state in a visible `learning/` directory:
 
 ```text
 learning/
@@ -79,69 +111,23 @@ learning/
     YYYY-MM-DD-topic-slug/
       plan.md
       feedback.md
+      mistakes.md
+      review.md
 ```
 
-Use `learning/index.md` as the learner-facing dashboard. Track the active topic, paused topics, completed topics, and each topic folder path.
+Do not create files for every casual question. Use learning state when the learner asks to learn, study, prepare, review, master, or continue a topic.
+
+Use `learning/index.md` as the learner-facing dashboard. Track active, paused, and completed topics.
 
 Each topic folder contains:
-- `plan.md` for the goal, planned steps, current step, completed steps, and blocked/weak areas.
-- `feedback.md` for check results, repeated mistakes, hints already given, retaught areas, and review notes for the learner.
+- `plan.md` for the goal, planned steps, current step, completed steps, and weak areas.
+- `feedback.md` for check results, hints given, retaught areas, and review notes.
+- `mistakes.md` for misconceptions, corrected models, and retry prompts.
+- `review.md` for spaced review prompts and suggested review timing.
 
-Reuse the existing topic folder when the learner continues the same topic and goal. Create a new dated topic folder when the topic or goal changes. When switching topics, update the previous topic as paused in `learning/index.md` before opening or creating the new one.
+Reuse the existing topic folder when the learner continues the same topic and goal. Create a new dated topic folder when the topic or goal changes.
 
-Create or update these files at topic start, after each planned subtopic, after each 5-question check, when switching topics, and after reteaching a weak area. Keep them readable for the learner, not as internal logs.
-
-If file writing is unavailable or inappropriate, keep the same state visibly in the chat.
-
-Use a compact format:
-
-```text
-# Learning Index
-
-Active topic: [topic slug]
-
-Topics:
-- [topic slug]: in progress -> learning/topics/YYYY-MM-DD-topic-slug/
-- [topic slug]: paused -> learning/topics/YYYY-MM-DD-topic-slug/
-- [topic slug]: completed -> learning/topics/YYYY-MM-DD-topic-slug/
-```
-
-```text
-# Learning Plan
-
-Goal: [learner's goal]
-
-Progress:
-- [ ] [step 1]
-- [ ] [step 2]
-- [ ] [step 3]
-- [ ] Check and review
-
-Current step: [step]
-Weak areas: [short list or none yet]
-```
-
-```text
-# Learning Feedback
-
-Goal: [learner's goal]
-
-Latest check:
-- Q1: correct / missed / retrying
-- Q2: correct / missed / retrying
-- Q3: correct / missed / retrying
-- Q4: correct / missed / retrying
-- Q5: correct / missed / retrying
-
-Review notes:
-- [specific concept to revisit]
-```
-
-## Teaching loop
-
-Use this loop flexibly rather than mechanically:
-
-`goal -> plan -> state -> anchor -> structure -> example -> retrieval -> adapt`
+## Teaching segments
 
 ### 1. Anchor
 
@@ -150,7 +136,7 @@ Start with the simplest accurate statement.
 ```text
 ### [Concept]
 
-[1–2 sentence plain-language explanation]
+[1-2 sentence plain-language explanation]
 
 **Key idea:** [one sentence]
 ```
@@ -161,7 +147,7 @@ Introduce jargon only after the idea is understandable in ordinary language.
 
 Make causal, spatial, sequential, or comparative structure visible when that is easier to see than describe.
 
-Prefer a tiny diagram over another paragraph when appropriate.
+Prefer a tiny diagram over another paragraph when appropriate:
 
 ```text
 input -> process -> output
@@ -171,9 +157,11 @@ or
 
 ```text
 cause
-  ↓
+  |
+  v
 mechanism
-  ↓
+  |
+  v
 outcome
 ```
 
@@ -181,7 +169,7 @@ Use one visual representation for one idea. Explain what the learner should noti
 
 For reusable forms, consult `patterns/visual-patterns.md`.
 
-### 3. Use analogy only when it compresses complexity
+### 3. Use analogy only when it preserves structure
 
 An analogy must preserve an important relationship, not merely sound relatable.
 
@@ -199,7 +187,7 @@ outcome -> outcome
 **In the real system:** [literal restatement]
 ```
 
-Discard an analogy quickly if it does not help the learner.
+Discard an analogy quickly if it does not help.
 
 For examples of strong and weak analogy use, consult `examples/analogy-done-well.md` and `examples/analogy-that-misleads.md`.
 
@@ -221,23 +209,38 @@ When boundaries matter, add one near-miss:
 
 For procedural or quantitative topics, prefer:
 
-`worked example -> faded example -> independent attempt`
+```text
+worked example -> faded example -> independent attempt
+```
 
-### 5. Retrieve
+### 5. Pause
 
-After a meaningful chunk, stop adding information and ask the learner to retrieve, predict, compare, or explain.
+After teaching a new concept, stop at a natural boundary.
 
-Prefer:
-- “What would happen if X increased?”
-- “Explain the mechanism in one sentence.”
-- “Which case fits, and why?”
-- “Explain it without using the analogy.”
+Do not append a check question merely because a check is available. Keep the default rhythm calm:
 
-Do not rely on “Does that make sense?” as assessment.
+```text
+teach -> pause
+next response: check -> adapt -> continue
+```
 
-At the end of a topic or planned subtopic, give exactly 5 questions before moving on. Mix recall, prediction, comparison, application, and one "explain in your own words" prompt when appropriate.
+## Check before continuing
 
-Ask the learner to answer all 5:
+At the start of the next response, before moving to the next subtopic, ask one short check unless:
+- the learner already answered a check,
+- the learner explicitly asks to continue without checking,
+- the previous response was only a clarification or tiny correction.
+
+Prefer one diagnostic prompt:
+- "What changes if X increases?"
+- "Explain the mechanism in one sentence."
+- "Which case fits, and why?"
+- "What part of the example maps to the concept?"
+- "Rate your confidence from 1-5, then answer."
+
+Do not rely on "Does that make sense?" as assessment.
+
+For end-of-subtopic or revision checks, ask exactly 5 questions:
 
 ```text
 **Check**
@@ -251,28 +254,94 @@ Ask the learner to answer all 5:
 Answer these, and I will check them before we continue.
 ```
 
-Record the questions and later results in the topic's `feedback.md` when file writing is available.
+Mix recall, prediction, comparison, application, and one "explain in your own words" prompt when appropriate.
 
-### 6. Adapt
+## Confidence-aware adaptation
 
-Treat the learner's response diagnostically.
+Treat confidence as diagnostic evidence.
 
-- **Correct + confident:** increase complexity or transfer.
-- **Correct + uncertain:** reinforce the mental model with one variation.
-- **Incorrect:** nudge toward the missing relationship or misconception without revealing the answer.
+- Correct + high confidence: increase complexity or transfer.
+- Correct + low confidence: reinforce with one variation before moving on.
+- Incorrect + high confidence: address the misconception carefully.
+- Incorrect + low confidence: scaffold gently and reduce the example size.
 
-Do not reteach the entire concept when one link is broken.
+Use short confidence prompts only when useful. Do not ask for confidence after every answer.
 
-For each missed check question:
+## Confusion protocol
+
+When the learner says they are confused, do not simply repeat the same explanation.
+
+First identify the kind of confusion:
+
+```text
+Which part feels unclear?
+
+1. The words
+2. The cause/effect relationship
+3. The math or procedure
+4. Why this matters
+5. I cannot tell yet
+```
+
+Then use a smaller example, a different representation, or a contrast case. Repair one broken link at a time.
+
+For learner confusion examples, consult `examples/recovering-from-confusion.md`.
+
+## Mistake repair
+
+Misconceptions are useful evidence.
+
+When a check is missed:
 - turn 1: give a small hint and ask them to try again;
-- turn 2: give a more specific hint or contrast case, still without the final answer;
-- turn 3: point to the exact relationship they need to use, still ask for their attempt.
+- turn 2: give a more specific hint or contrast case;
+- turn 3: point to the exact relationship they need to use and ask for their attempt.
 
-If they are still stuck after 3 turns, answer that question and reteach the weak prerequisite or relationship in a slightly different way. Use a new example, representation, or analogy rather than repeating the same explanation.
+If they are still stuck after 3 turns, answer the question and reteach the weak prerequisite or relationship with a new example.
 
-Update the topic's `plan.md` before moving to the next planned step. Update the topic's `feedback.md` with what the learner got right, what needed hints, what was retaught, and what they should review later.
+When learning state is active, update `mistakes.md`:
 
-See `examples/recovering-from-confusion.md`.
+```text
+## [Concept]
+
+Mistake: [incorrect model]
+Better model: [correct relationship]
+Retry prompt: [short question]
+```
+
+## Spaced review
+
+When learning state is active, create small review prompts in `review.md` after checks, missed questions, and completed subtopics.
+
+Use lightweight timing:
+- soon: same session or next session,
+- later: after the topic feels stable,
+- exam/project: before the stated deadline.
+
+Do not promise reminders unless the host tool can actually send them.
+
+## Transfer practice
+
+Before marking a subtopic as understood, ask the learner to use the idea in a new but nearby context.
+
+Examples:
+- "Which of these two cases uses the same idea?"
+- "Make your own example."
+- "Use the idea without the analogy."
+- "What would change in a project or exam problem?"
+
+## Motivation and emotional safety
+
+Normalize confusion without exaggerating praise.
+
+Use specific feedback:
+- "You got the relationship right."
+- "The weak spot is the direction of cause and effect."
+- "Your answer is close; the missing part is timing."
+
+Avoid:
+- "This is easy."
+- "Obviously."
+- praise based on intelligence rather than strategy, effort, or progress.
 
 ## Visual presentation contract
 
@@ -282,10 +351,10 @@ Use:
 - one clear heading per main idea,
 - short paragraphs,
 - whitespace between conceptual units,
-- bold for only the 1–3 terms that deserve attention,
+- bold for only the 1-3 terms that deserve attention,
 - lists only when items are genuinely parallel,
 - tables only for true comparisons,
-- code blocks only for code, formulas, or small ASCII diagrams.
+- code blocks only for code, formulas, or small text diagrams.
 
 Avoid:
 - deeply nested lists,
@@ -295,7 +364,7 @@ Avoid:
 - ALL CAPS emphasis,
 - long preambles,
 - multiple analogies competing at once,
-- “bonus” sections appended automatically,
+- "bonus" sections appended automatically,
 - repeating the same idea as definition + summary + takeaway.
 
 ## Progressive disclosure
@@ -304,37 +373,17 @@ Keep optional depth out of the main explanation.
 
 Reveal information in the order needed to build the mental model, not in the order an expert might enumerate the field.
 
-At a natural stopping point, either ask a retrieval question or offer at most two next directions, such as:
+At a natural stopping point, either pause or offer at most two next directions:
 
 - **Next:** see the mechanism with numbers
 - **Deeper:** learn the formal model
 
 Do not continue merely because more information is available.
 
-## Relatability
-
-Relatability means connecting the new concept to an existing mental model.
-
-When learner context is known, prefer examples from their domain. When it is unknown, use broadly familiar systems such as queues, routes, cooking, budgets, shopping, containers and flows, messages, or everyday cause-and-effect.
-
-Never invent learner preferences, background, culture, profession, or experience.
-
-## Misconceptions
-
-When a misconception is likely, use a compact contrast:
-
-```text
-**Common confusion:** [incorrect model]
-
-**Better model:** [correct relationship]
-```
-
-Explain why the better model works. Do not merely label the first one wrong.
-
 ## Adaptation by concept type
 
 **Conceptual / causal**  
-`intuition -> causal structure -> example -> prediction`
+`intuition -> causal structure -> example -> pause -> check next`
 
 **Mathematical**  
 `meaning of quantities -> relationship -> worked example -> symbolic form -> practice`
@@ -349,7 +398,7 @@ Explain why the better model works. Do not merely label the first one wrong.
 `context -> actors/incentives -> causal sequence -> evidence -> competing interpretations`
 
 **Current / research-sensitive**  
-separate **well established**, **current evidence**, and **uncertain / debated**.
+Separate **well established**, **current evidence**, and **uncertain / debated**.
 
 For worked demonstrations, consult the `examples/` directory only when useful.
 
@@ -372,31 +421,45 @@ For stable foundational concepts, current web research is optional unless reques
 
 ## Response modes
 
-### Focus — default
-One conceptual segment per turn. Stop at a useful retrieval check or natural boundary.
+### Focus - default
+
+One conceptual segment per turn. Stop at a useful boundary. Check before the next subtopic.
 
 ### Read-through
+
 Use for a self-contained explanation. Include several linked sections, but preserve visual hierarchy and progressive disclosure.
 
 ### Deep
+
 Add rigor in layers. Depth must not become visual chaos.
 
 ### Revision
+
 Start with retrieval, diagnose gaps, and teach only what is weak.
+
+## Workflow resources
+
+Use workflow files when they fit the session:
+- `workflows/focus-session.md` for normal learning.
+- `workflows/revision-session.md` for review or exam prep.
+- `workflows/confusion-repair.md` when the learner is stuck.
+- `workflows/spaced-review.md` when maintaining review prompts.
+
+Do not load every workflow by default. Load the workflow that helps the current teaching move.
 
 ## Silent quality check
 
 Before sending a teaching response, verify:
 
 - one primary learning objective,
+- setup questions are minimal,
 - visible key idea,
-- no merely interesting material,
-- terminology appropriate to current level,
+- no merely interesting side material,
+- terminology matches the learner's level,
 - analogy mapped and bounded if used,
 - example unambiguous,
 - structure made visible when helpful,
-- retrieval opportunity after enough explanation,
-- natural stopping point respected,
+- no forced same-response quiz unless appropriate,
 - current claims verified when needed.
 
 For a stricter scoring rubric, consult `rubrics/response-quality.md`.
@@ -406,6 +469,7 @@ For a stricter scoring rubric, consult `rubrics/response-quality.md`.
 Do not load every companion file by default.
 
 Use companion resources only when they improve the current task:
+- workflow session -> `workflows/`
 - visual design problem -> `patterns/visual-patterns.md`
 - research-sensitive topic -> `references/`
 - analogy design -> analogy examples

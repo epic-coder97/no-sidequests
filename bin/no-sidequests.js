@@ -44,6 +44,7 @@ const skillFiles = [
   "patterns",
   "references",
   "rubrics",
+  "workflows",
 ];
 
 function copySkill(destination) {

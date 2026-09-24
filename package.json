@@ -1,7 +1,7 @@
 {
   "name": "no-sidequests",
   "version": "1.1.0",
-  "description": "Install No Sidequests, a distraction-free AI learning skill.",
+  "description": "Install No Sidequests, an AI tutoring skill for focused learning, active recall, and spaced review.",
   "license": "MIT",
   "author": "epic-coder97",
   "type": "commonjs",
@@ -18,16 +18,21 @@
   },
   "scripts": {
     "start": "node bin/no-sidequests.js",
-    "pack:check": "npm pack --dry-run"
+    "pack:check": "npm pack --dry-run",
+    "test": "node --test tests/*.test.js",
+    "validate": "node scripts/validate-skill.js",
+    "audit:readme": "node scripts/readme-audit.js"
   },
   "files": [
     "bin",
+    "scripts",
     "SKILL.md",
     "agents",
     "examples",
     "patterns",
     "references",
     "rubrics",
+    "workflows",
     "README.md",
     "LICENSE"
   ],
@@ -36,6 +41,11 @@
     "agent-skills",
     "learning",
     "ai-tutor",
+    "ai-tutoring",
+    "study-assistant",
+    "active-recall",
+    "spaced-review",
+    "progressive-disclosure",
     "codex",
     "claude",
     "opencode",

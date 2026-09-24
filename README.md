@@ -1,4 +1,4 @@
-# No Sidequests
+# No Sidequests: An AI Tutoring Skill for Focused Learning
 
 [![npm version](https://img.shields.io/npm/v/no-sidequests.svg)](https://www.npmjs.com/package/no-sidequests)
 [![npm downloads](https://img.shields.io/npm/dm/no-sidequests.svg)](https://www.npmjs.com/package/no-sidequests)
@@ -6,517 +6,296 @@
 [![Agent Skill](https://img.shields.io/badge/Agent%20Skill-compatible-brightgreen.svg)](https://agentskills.io/)
 [![skills.sh](https://skills.sh/b/epic-coder97/no-sidequests)](https://skills.sh/epic-coder97/no-sidequests)
 
-> **Learn one thing at a time. No sidequests.**
+**No Sidequests** is an open-source **AI tutoring skill** that helps students learn one concept at a time.
 
-No Sidequests is an open-source **Agent Skill for distraction-resistant learning**.
-
-It changes how an AI teaches: less information dumping, clearer visual structure, better analogies, active recall, and progressive disclosure.
+It turns an AI assistant into a calmer **AI learning assistant**: less information dumping, better examples, active recall, progressive disclosure, misconception repair, confidence-aware feedback, and spaced review.
 
 ```text
-goal → learning plan → one idea → example → check → feedback
+goal -> light calibration -> teach one idea -> pause -> check before next step -> adapt -> review
 ```
 
-Instead of trying to explain an entire topic at once, No Sidequests helps the AI stay with the concept you are currently trying to understand.
+GitHub: https://github.com/epic-coder97/no-sidequests  
+npm: https://www.npmjs.com/package/no-sidequests
 
-**GitHub:** https://github.com/epic-coder97/no-sidequests
-**npm:** https://www.npmjs.com/package/no-sidequests
+## What Is No Sidequests?
 
----
+No Sidequests is an Agent Skill for AI tools such as Codex, Claude Code, OpenCode, Gemini CLI, and Cursor.
 
-## Install
+It does not teach a specific subject. Instead, it changes **how the AI teaches any subject**.
 
-### The easiest way
+The skill asks the AI to:
 
-Requires **Node.js 18 or newer**.
+- explain one meaningful idea at a time,
+- avoid unnecessary side topics,
+- use small diagrams when structure matters,
+- map analogies carefully,
+- ask checks before moving to the next subtopic,
+- adapt to mistakes and low confidence,
+- track weak areas during longer learning sessions.
 
-```bash
-npx no-sidequests
-```
+The result is a focused AI tutor that helps a student build understanding instead of just reading more information.
 
-The installer will ask:
+## Who It Helps
+
+No Sidequests is useful for:
+
+- students learning a difficult topic from scratch,
+- self-learners using AI as a tutor,
+- developers learning programming concepts,
+- exam or interview candidates,
+- teachers who want cleaner AI explanations,
+- AI tool users who dislike long, overloaded answers.
+
+It is especially helpful when the learner says:
 
 ```text
-Which AI tool are you using?
-
-  1. Codex
-  2. Claude Code
-  3. OpenCode
-  4. Gemini CLI
-  5. Cursor
+I understand the words, but the idea is not clicking.
 ```
 
-Then choose where you want the skill installed:
+## Why AI Tutors Overwhelm Students
+
+AI can explain almost anything, but more information is not always more learning.
+
+A student may ask one question and receive definitions, related concepts, exceptions, examples, terminology, next steps, and a summary.
+
+That can be correct and still be hard to learn from.
+
+No Sidequests tells the AI to optimize for **comprehension before coverage**.
+
+## How No Sidequests Teaches
+
+No Sidequests uses learning methods from instructional design, cognitive psychology, and expert teaching practice.
+
+### Lightweight learner calibration
+
+The AI does not ask a long intake form.
+
+It asks only what is needed:
 
 ```text
-1. Current project
-2. User / global
+What is the goal?
+1. Simple intuition
+2. Exam or interview prep
+3. Use it in a project
+4. Fix confusion
+5. Go deeper
 ```
 
-No Sidequests will copy the skill into the appropriate skills directory.
+If the student already gave enough context, the AI starts teaching.
 
-That's it.
+### Progressive disclosure
 
-Start a new session in your AI tool and ask it to teach you something.
+The AI reveals ideas in the order the learner needs them.
 
-### Install with skills.sh
+It does not dump the whole field at once.
 
-If you use the `skills` CLI, you can install directly from GitHub:
-
-```bash
-npx skills add epic-coder97/no-sidequests
+```text
+first mental model -> key mechanism -> worked example -> practice -> review
 ```
 
----
+### Active recall
 
-## What does the npm installer do?
+The AI checks understanding before moving forward.
 
-The npm package is only an installer for the No Sidequests skill.
+The default rhythm is calm:
 
-It:
+```text
+Response 1: teach one concept and pause
+Response 2: check understanding before the next subtopic
+Response 3: adapt and continue
+```
 
-* copies `SKILL.md` and its supporting resources into your selected skills directory;
-* lets you choose between project-level and user-level installation;
-* asks before replacing an existing No Sidequests installation.
+This avoids turning every explanation into an immediate quiz.
 
-It does **not**:
+### Misconception repair
 
-* modify your application source code;
-* send your project files anywhere;
-* require runtime dependencies;
-* change the behavior of your AI outside the installed skill.
+If the student is wrong, the AI does not restart the whole lesson.
 
-The teaching skill itself is made from Markdown instructions, examples, patterns, research notes, and optional host metadata.
+It identifies the broken link and repairs that one part:
 
----
+```text
+Mistake: current depends on total charge only
+Better model: current depends on charge per unit time
+Retry: what happens if the same charge takes twice as long?
+```
 
-## Supported by the npm installer
+### Confidence-aware feedback
 
-| Tool        | Project install                | User/global install              |
-| ----------- | ------------------------------ | -------------------------------- |
-| Codex       | `.agents/skills/no-sidequests` | `~/.agents/skills/no-sidequests` |
-| Claude Code | `.claude/skills/no-sidequests` | `~/.claude/skills/no-sidequests` |
-| OpenCode    | `.agents/skills/no-sidequests` | `~/.agents/skills/no-sidequests` |
-| Gemini CLI  | `.agents/skills/no-sidequests` | `~/.agents/skills/no-sidequests` |
-| Cursor      | `.agents/skills/no-sidequests` | `~/.agents/skills/no-sidequests` |
+A correct answer with low confidence needs reinforcement.
 
-For other Agent Skills-compatible tools, use one of the manual installation methods below.
+An incorrect answer with high confidence may reveal a strong misconception.
 
----
+No Sidequests treats confidence as learning evidence, not as a grade.
 
-# Why No Sidequests?
+### Spaced review
 
-AI can explain almost anything, but when you are learning, more information is not always more useful.
+For longer study sessions, No Sidequests can track review prompts:
 
-You might ask about one concept and receive definitions, related concepts, caveats, examples, tables, terminology, and suggestions for what to learn next — all in the same answer.
+```text
+learning/
+  index.md
+  topics/
+    YYYY-MM-DD-topic/
+      plan.md
+      feedback.md
+      mistakes.md
+      review.md
+```
 
-The information may be correct, but now you have to decide what to focus on while you are also trying to understand it.
+This helps the student revisit weak areas instead of rereading everything.
 
-No Sidequests asks the AI to optimize for **comprehension before coverage**.
+## Key Features
 
-It encourages the AI to:
+- AI tutoring skill for focused learning
+- Works with Codex, Claude Code, OpenCode, Gemini CLI, and Cursor
+- Active recall checks before moving to the next subtopic
+- Progressive disclosure instead of information dumping
+- Accurate analogies with explicit limits
+- Confusion repair workflow
+- Mistake journal for repeated misconceptions
+- Spaced review prompts for longer learning sessions
+- Low-noise formatting for calmer reading
+- Small Node.js installer with no runtime dependencies
 
-* teach one meaningful conceptual unit at a time;
-* keep headings, emphasis, and lists visually restrained;
-* use small text diagrams when relationships are easier to see than describe;
-* connect unfamiliar ideas to familiar experiences;
-* explain where an analogy stops being accurate;
-* use examples before adding more abstraction;
-* ask the learner to recall, predict, or explain;
-* increase depth as understanding develops;
-* avoid introducing related concepts before they become useful.
-
-The goal is not simply shorter answers.
-
-Sometimes a good explanation is short. Sometimes it needs to be detailed.
-
-The important part is that the information arrives in an order that helps you build the idea.
-
----
-
-## A tiny example
+## Example: Before and After
 
 Ask:
 
-> Teach me electric current. I know basic arithmetic but not circuits.
+```text
+Teach me electric current. I know basic arithmetic but not circuits.
+```
 
-Instead of immediately introducing voltage, resistance, Ohm's law, units, electron flow, and several related concepts, No Sidequests might begin with:
+A typical AI answer may immediately introduce current, voltage, resistance, Ohm's law, electrons, units, and circuit diagrams.
+
+No Sidequests starts smaller:
 
 ```text
-### Electric current
+### Electric Current
 
 Current tells us how quickly electric charge passes a point.
 
 **Key idea:** more charge passing each second means more current.
 
 charge passing each second
-            ↓
-         current
-
-**Check**
-
-The same amount of charge passes,
-but it takes twice as long.
-
-What happens to the current?
+          |
+          v
+       current
 ```
 
-Then it waits.
+Then it pauses. Before the next subtopic, it checks whether the idea landed.
 
-The next concept can come after the first one makes sense.
+## Install
 
----
+Requires Node.js 18 or newer.
 
-# Use
+```bash
+npx no-sidequests
+```
 
-Usually, just ask naturally.
+The installer asks which AI tool you use:
 
 ```text
-Teach me Bayes' theorem from scratch.
+1. Codex
+2. Claude Code
+3. OpenCode
+4. Gemini CLI
+5. Cursor
 ```
+
+Then it asks where to install:
 
 ```text
-I understand functions but closures confuse me.
+1. Current project
+2. User / global
 ```
 
-```text
-Explain inflation using a relatable analogy.
-Tell me where the analogy breaks.
+After installation, start a new AI session and ask it to teach you something.
+
+## Supported AI Tools
+
+| Tool | Project install | User/global install |
+| --- | --- | --- |
+| Codex | `.agents/skills/no-sidequests` | `~/.agents/skills/no-sidequests` |
+| Claude Code | `.claude/skills/no-sidequests` | `~/.claude/skills/no-sidequests` |
+| OpenCode | `.agents/skills/no-sidequests` | `~/.agents/skills/no-sidequests` |
+| Gemini CLI | `.agents/skills/no-sidequests` | `~/.agents/skills/no-sidequests` |
+| Cursor | `.agents/skills/no-sidequests` | `~/.agents/skills/no-sidequests` |
+
+## Install with skills.sh
+
+If you use the `skills` CLI:
+
+```bash
+npx skills add epic-coder97/no-sidequests
 ```
 
-```text
-Quiz me on what we just covered before continuing.
-```
+## Manual Installation
 
-You can also explicitly ask for No Sidequests:
-
-```text
-Use No Sidequests to teach me recursion.
-```
-
----
-
-## Teaching modes
-
-No Sidequests includes four modes.
-
-### Focus
-
-The default.
-
-One learning segment at a time with frequent opportunities to think before continuing.
-
-```text
-Use No Sidequests in Focus mode to teach me recursion.
-```
-
-### Read-through
-
-A more continuous, self-contained explanation when you want to read through a topic without stopping after every segment.
-
-### Deep
-
-More technical depth and rigor while preserving a clear hierarchy.
-
-### Revision
-
-Retrieval first.
-
-The tutor checks what you already know and spends more time on weak areas rather than reteaching everything.
-
----
-
-# What makes it different?
-
-## One learning job at a time
-
-A response does not need to simultaneously:
-
-* introduce the concept;
-* explain every mechanism;
-* cover edge cases;
-* provide five examples;
-* correct misconceptions;
-* quiz you;
-* introduce the next topic.
-
-Sometimes the current job is simply to establish intuition.
-
-Sometimes it is to fix one misunderstanding.
-
-Sometimes it is to work through an example.
-
-No Sidequests tries to determine what is useful **now**.
-
----
-
-## Analogies that actually map to the concept
-
-AI can produce very relatable analogies that still leave you with the wrong mental model.
-
-No Sidequests asks the AI to make the mapping explicit.
-
-For example:
-
-```text
-familiar thing        → technical concept
-familiar relationship → technical relationship
-change in analogy     → corresponding real change
-```
-
-It should also explain where the analogy stops being accurate.
-
-An analogy is there to support understanding, not replace the actual concept.
-
----
-
-## Lower visual noise
-
-No Sidequests treats presentation as part of teaching.
-
-It discourages responses where everything competes for attention through:
-
-* excessive headings;
-* unnecessary bullet lists;
-* constant bold text;
-* decorative callouts;
-* large tables when a small relationship would work;
-* repeated summaries.
-
-Formatting should help the learner know where to look.
-
----
-
-## Active recall instead of endless explanation
-
-Sometimes the best next step is not another paragraph.
-
-No Sidequests can ask you to:
-
-* predict what happens next;
-* explain the idea in your own words;
-* identify which example matches the concept;
-* solve a small variation;
-* recall something without looking back.
-
-If the answer reveals a misunderstanding, the tutor focuses on that specific gap rather than restarting the whole lesson.
-
-For longer learning sessions, it can also keep a small `learning/` folder in the workspace:
-
-* `learning/index.md` as the topic dashboard.
-* `learning/topics/<date-topic>/plan.md` for the goal, current step, completed steps, and weak areas.
-* `learning/topics/<date-topic>/feedback.md` for quiz results, hints given, retaught topics, and review notes.
-
----
-
-# Manual installation
-
-Don't want to use npm? You can install No Sidequests directly from GitHub.
-
-## Shared Agent Skills location
-
-Codex, OpenCode, Gemini CLI, Cursor, and other compatible tools can use the shared `.agents/skills` location.
-
-### User/global
+For Agent Skills-compatible tools that use `.agents/skills`:
 
 ```bash
 mkdir -p ~/.agents/skills
 git clone https://github.com/epic-coder97/no-sidequests.git ~/.agents/skills/no-sidequests
 ```
 
-### Current project
+For a project-only install:
 
 ```bash
 mkdir -p .agents/skills
 git clone https://github.com/epic-coder97/no-sidequests.git .agents/skills/no-sidequests
 ```
 
----
-
-## Claude Code
-
-Claude Code uses `.claude/skills`.
-
-### User/global
+Claude Code uses `.claude/skills`:
 
 ```bash
 mkdir -p ~/.claude/skills
 git clone https://github.com/epic-coder97/no-sidequests.git ~/.claude/skills/no-sidequests
 ```
 
-### Current project
+## Teaching Modes
 
-```bash
-mkdir -p .claude/skills
-git clone https://github.com/epic-coder97/no-sidequests.git .claude/skills/no-sidequests
-```
+### Focus
 
----
+The default mode. Teach one concept, pause, check before moving on, and adapt.
 
-## GitHub CLI
+### Read-through
 
-If your GitHub CLI supports `gh skill`, you can also install directly from the repository.
+A more continuous explanation when the learner wants to read through a topic without stopping after every segment.
 
-Preview the skill first:
+### Deep
 
-```bash
-gh skill preview epic-coder97/no-sidequests SKILL.md
-```
+More technical depth while preserving clear structure.
 
-Examples:
+### Revision
 
-```bash
-# Codex
-gh skill install epic-coder97/no-sidequests SKILL.md --agent codex --scope user
+Retrieval first. The AI checks what the student remembers, then reteaches weak areas.
 
-# Claude Code
-gh skill install epic-coder97/no-sidequests SKILL.md --agent claude-code --scope user
-
-# OpenCode
-gh skill install epic-coder97/no-sidequests SKILL.md --agent opencode --scope user
-
-# Gemini CLI
-gh skill install epic-coder97/no-sidequests SKILL.md --agent gemini-cli --scope user
-
-# Cursor
-gh skill install epic-coder97/no-sidequests SKILL.md --agent cursor --scope user
-
-# GitHub Copilot
-gh skill install epic-coder97/no-sidequests SKILL.md --agent github-copilot --scope user
-```
-
----
-
-## Gemini CLI
-
-Gemini CLI also supports installing skills directly from a Git repository:
-
-```bash
-gemini skills install https://github.com/epic-coder97/no-sidequests.git
-```
-
-For a workspace-only install:
-
-```bash
-gemini skills install https://github.com/epic-coder97/no-sidequests.git --scope workspace
-```
-
-If Gemini CLI was already running when the skill was installed:
-
-```text
-/skills reload
-```
-
----
-
-# What's inside?
+## Project Structure
 
 ```text
 no-sidequests/
-├── SKILL.md
-├── README.md
-├── LICENSE
-├── package.json
-├── bin/
-│   └── no-sidequests.js
-├── agents/
-│   └── openai.yaml
-├── examples/
-├── patterns/
-│   └── visual-patterns.md
-├── references/
-│   ├── learning-science.md
-│   └── source-selection.md
-└── rubrics/
-    └── response-quality.md
+|-- SKILL.md
+|-- README.md
+|-- LICENSE
+|-- package.json
+|-- bin/
+|   `-- no-sidequests.js
+|-- scripts/
+|   |-- create-learning-topic.js
+|   |-- readme-audit.js
+|   `-- validate-skill.js
+|-- workflows/
+|   |-- focus-session.md
+|   |-- revision-session.md
+|   |-- confusion-repair.md
+|   `-- spaced-review.md
+|-- examples/
+|-- patterns/
+|-- references/
+`-- rubrics/
 ```
 
-### `SKILL.md`
-
-Contains the core runtime teaching behavior.
-
-### `examples/`
-
-Contrasting demonstrations such as:
-
-* good vs. overloaded explanations;
-* good vs. misleading analogies;
-* novice vs. advanced explanations;
-* math examples;
-* misconception repair.
-
-### `patterns/`
-
-Reusable low-noise visual structures for relationships such as:
-
-```text
-cause → effect
-```
-
-```text
-input → process → output
-```
-
-```text
-A
-↓
-B
-↓
-C
-```
-
-### `references/`
-
-The research and source-selection guidance behind the skill.
-
-### `rubrics/`
-
-A lightweight quality check for deciding whether an explanation has become noisy, overloaded, unclear, or poorly sequenced.
-
----
-
-## Resources are loaded progressively
-
-The supporting files are **not intended to be loaded all at once**.
-
-`SKILL.md` tells the agent when a particular resource is useful.
-
-For example, analogy examples are useful when constructing or evaluating an analogy, while research guidance is useful when the subject requires current or externally verified information.
-
-The architecture follows the same principle as the teaching style:
-
-**use the information that is useful for the current task rather than loading everything just because it exists.**
-
----
-
-# Design principles
-
-1. **Comprehension before coverage.**
-2. **One learning job per response.**
-3. **Progressive disclosure over information dumping.**
-4. **Visible relationships over decorative formatting.**
-5. **Analogies with explicit mappings and limits.**
-6. **Retrieval and prediction over passive rereading.**
-7. **Adapt depth based on evidence of understanding.**
-8. **Use research when facts are current, uncertain, or contested.**
-
-The research basis is documented in:
-
-[`references/learning-science.md`](references/learning-science.md)
-
-The evaluation criteria are documented in:
-
-[`rubrics/response-quality.md`](rubrics/response-quality.md)
-
----
-
-# Development
-
-Clone the repository:
-
-```bash
-git clone https://github.com/epic-coder97/no-sidequests.git
-cd no-sidequests
-```
+## Developer Scripts
 
 Run the installer locally:
 
@@ -524,87 +303,112 @@ Run the installer locally:
 npm start
 ```
 
-Or make the CLI available locally with:
+Run tests:
 
 ```bash
-npm link
-no-sidequests
+npm test
 ```
 
-Check exactly what npm will publish:
+Validate required skill files:
 
 ```bash
-npm pack --dry-run
+npm run validate
 ```
 
-You can also test the publish normalization without actually publishing:
+Audit the README for required SEO headings and phrases:
 
 ```bash
-npm publish --dry-run
+npm run audit:readme
 ```
 
+Check what npm will publish:
 
----
-
-# Security
-
-The No Sidequests **teaching skill** is instruction-based and consists primarily of Markdown resources.
-
-The npm package additionally contains a small Node.js installer:
-
-```text
-bin/no-sidequests.js
+```bash
+npm run pack:check
 ```
 
-The installer copies the included skill files into the skills directory you choose.
+Create a local learning topic scaffold:
 
-It does not need access to your project contents beyond creating the selected skill directory, and it does not send project data to an external service.
+```bash
+node scripts/create-learning-topic.js "Electric Current" "simple intuition"
+```
 
-As with any third-party CLI or Agent Skill, you should inspect the source before running it if you have security concerns.
+## Security
 
-The installer source is available here:
+The No Sidequests teaching skill is instruction-based and consists primarily of Markdown resources.
 
-[`bin/no-sidequests.js`](bin/no-sidequests.js)
+The npm package contains a small Node.js installer that copies the skill files into the skill directory you choose.
 
----
+It does not:
 
-# Contributing
+- send your project files anywhere,
+- modify your application source code,
+- require runtime dependencies,
+- change your AI tool outside the installed skill.
+
+As with any third-party CLI or Agent Skill, inspect the source before running it if you have security concerns.
+
+## FAQ
+
+### What is an AI tutoring skill?
+
+An AI tutoring skill is a set of instructions and resources that changes how an AI assistant teaches. No Sidequests makes the AI teach with clearer sequence, active recall, and less distraction.
+
+### How does No Sidequests help students learn?
+
+It reduces cognitive overload. The AI teaches one idea at a time, pauses, checks understanding before the next subtopic, repairs misconceptions, and creates review prompts for longer study sessions.
+
+### Does No Sidequests work with Codex?
+
+Yes. The installer supports Codex project installs and user/global installs.
+
+### Does it work with Claude Code?
+
+Yes. The installer can install No Sidequests into `.claude/skills/no-sidequests` or `~/.claude/skills/no-sidequests`.
+
+### Does it work with Gemini CLI?
+
+Yes. The npm installer supports Gemini CLI through the shared `.agents/skills` location.
+
+### Is No Sidequests free?
+
+Yes. No Sidequests is open source and released under the MIT License.
+
+### Does No Sidequests send my files anywhere?
+
+No. The installer copies local files into the selected skill directory. It does not upload your project files.
+
+### Can teachers use it?
+
+Yes. Teachers can use No Sidequests as a promptable teaching style for clearer explanations, misconception repair, and review questions.
+
+## Contributing
 
 Contributions are welcome.
 
 Useful contributions include:
 
-* better teaching examples;
-* analogy failure cases;
-* plain-text visual patterns;
-* misconception-repair approaches;
-* subject-specific demonstrations;
-* improvements to the installer;
-* support for additional AI tools;
-* stronger learning-science references.
+- better teaching examples,
+- confusion repair patterns,
+- analogy failure cases,
+- spaced review examples,
+- misconception repair examples,
+- README and SEO improvements,
+- support for additional AI tools.
 
-Keep the main `SKILL.md` focused. Detailed material should generally live in supporting resources so agents can load it only when needed.
+Keep `SKILL.md` focused. Detailed material should live in supporting resources so agents can load only what they need.
 
----
-
-# License
+## License
 
 No Sidequests is released under the [MIT License](LICENSE).
 
-You may use, copy, modify, distribute, and build on it subject to the license terms.
+## References
 
----
+- [Agent Skills specification](https://agentskills.io/specification)
+- [OpenAI Codex Skills](https://developers.openai.com/codex/skills/)
+- [Claude Code Skills](https://code.claude.com/docs/en/skills)
+- [OpenCode Agent Skills](https://opencode.ai/docs/skills/)
+- [Gemini CLI Agent Skills](https://github.com/google-gemini/gemini-cli/tree/main/docs)
+- [Cursor](https://cursor.com/)
 
-# References
-
-* [Agent Skills specification](https://agentskills.io/specification)
-* [OpenAI Codex Skills](https://developers.openai.com/codex/skills/)
-* [Claude Code Skills](https://code.claude.com/docs/en/skills)
-* [OpenCode Agent Skills](https://opencode.ai/docs/skills/)
-* [Gemini CLI Agent Skills](https://github.com/google-gemini/gemini-cli/tree/main/docs)
-* [Cursor](https://cursor.com/)
-* [GitHub Copilot Agent Skills](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills)
-
----
-
-**No Sidequests** — distraction-resistant learning, one concept at a time.
+**No Sidequests**: learn one concept at a time.
