@@ -144,6 +144,21 @@ Use `learning-materials/` as the default root folder for student-provided materi
 
 Preferred formats are `.md` and `.txt`, but do not require conversion. If the host tool can read PDFs, DOCX, slides, images, screenshots, or links, use them. If the material cannot be accessed, ask for the smallest useful section in readable form.
 
+When the learner wants to use workspace files but has not created a folder yet, offer two setup paths:
+
+```text
+You can create the folder manually in learning-materials/, or I can give you a command to run from the project root.
+
+Command option:
+npm run materials:new "Topic Name"
+
+Run it from: [project root path]
+
+This is faster and saves tokens because it creates the folder and starter files automatically.
+```
+
+Do not run the command for the learner unless they ask. If they prefer manual setup, let them create the folder themselves and continue once they provide the path.
+
 If the learner names a curriculum or education board, ask only the missing useful detail:
 
 ```text

@@ -40,8 +40,12 @@ If you do not have material, you can still ask a broad topic:
 Teach me linear regression.
 ```
 
-You can also create a starter folder with:
+You can create folders manually, or use the helper command from the project root.
+
+Run this from the folder that contains `package.json`:
 
 ```bash
 npm run materials:new "CBSE Class 10 Science"
 ```
+
+This is faster and saves tokens because it creates the folder and starter files automatically.

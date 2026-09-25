@@ -220,10 +220,18 @@ learning-materials/
 
 When material is provided, No Sidequests treats it as the primary source, maps the topic like an expert teacher, plans analogies and examples, predicts likely misconceptions, and then teaches one concept at a time.
 
-You can scaffold a material folder:
+You can create the folder manually, or use the helper command from the project root.
+
+Command option:
 
 ```bash
 npm run materials:new "CBSE Class 10 Science"
+```
+
+Run it from the root of this project, the same folder that contains `package.json`:
+
+```text
+no-sidequests/
 ```
 
 This creates:
@@ -238,6 +246,8 @@ learning-materials/
 ```
 
 If a student only has a broad topic, that still works. No Sidequests should not force the learner to provide files before starting.
+
+The command is optional, but faster. It also saves tokens because the AI does not need to walk the student through creating each file by hand.
 
 ## Install
 
