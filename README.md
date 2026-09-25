@@ -154,6 +154,8 @@ This helps the student revisit weak areas instead of rereading everything.
 - Confusion repair workflow
 - Mistake journal for repeated misconceptions
 - Spaced review prompts for longer learning sessions
+- Study from a broad topic or from files in `learning-materials/`
+- Material-folder scaffolding for chapters, notes, and question sets
 - Low-noise formatting for calmer reading
 - Small Node.js installer with no runtime dependencies
 
@@ -183,6 +185,59 @@ charge passing each second
 ```
 
 Then it pauses. Before the next subtopic, it checks whether the idea landed.
+
+## Study From Your Own Material
+
+Students can learn from a broad topic:
+
+```text
+Teach me linear regression.
+```
+
+They can also provide their own material:
+
+```text
+Use No Sidequests to teach me from learning-materials/cbse-class-10-science/
+```
+
+The default folder for source material is:
+
+```text
+learning-materials/
+```
+
+Recommended formats are `.md` and `.txt`, but they are not required. Use whatever the AI tool can read: pasted notes, PDFs, DOCX files, slides, screenshots, links, syllabus files, or question sets.
+
+Example:
+
+```text
+learning-materials/
+  cbse-class-10-science/
+    chapter-6-life-processes.md
+    teacher-notes.txt
+    exam-questions.md
+```
+
+When material is provided, No Sidequests treats it as the primary source, maps the topic like an expert teacher, plans analogies and examples, predicts likely misconceptions, and then teaches one concept at a time.
+
+You can scaffold a material folder:
+
+```bash
+npm run materials:new "CBSE Class 10 Science"
+```
+
+This creates:
+
+```text
+learning-materials/
+  cbse-class-10-science/
+    README.md
+    source.md
+    notes.md
+    questions.md
+```
+
+If a student only has a broad topic, that still works. No Sidequests should not force the learner to provide files before starting.
 
 ## Install
 
@@ -286,9 +341,12 @@ no-sidequests/
 |   `-- validate-skill.js
 |-- workflows/
 |   |-- focus-session.md
+|   |-- study-from-material.md
 |   |-- revision-session.md
 |   |-- confusion-repair.md
 |   `-- spaced-review.md
+|-- learning-materials/
+|   `-- README.md
 |-- examples/
 |-- patterns/
 |-- references/
@@ -331,6 +389,12 @@ Create a local learning topic scaffold:
 
 ```bash
 node scripts/create-learning-topic.js "Electric Current" "simple intuition"
+```
+
+Create a folder for student material:
+
+```bash
+npm run materials:new "CBSE Class 10 Science"
 ```
 
 ## Security

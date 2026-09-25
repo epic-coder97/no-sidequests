@@ -15,6 +15,9 @@ const {
 const {
   auditReadmeText,
 } = require("../scripts/readme-audit");
+const {
+  createMaterialFolder,
+} = require("../scripts/create-material-folder");
 
 function makeTempProject() {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), "no-sidequests-test-"));
@@ -74,4 +77,22 @@ test("auditReadmeText requires SEO sections and phrases", () => {
   assert.equal(result.ok, false);
   assert.ok(result.missingHeadings.includes("## What Is No Sidequests?"));
   assert.ok(result.missingPhrases.includes("AI tutoring skill"));
+});
+
+test("createMaterialFolder scaffolds a learner material folder", () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "no-sidequests-materials-"));
+
+  const result = createMaterialFolder({
+    root,
+    name: "CBSE Class 10 Science",
+  });
+
+  assert.equal(result.slug, "cbse-class-10-science");
+  assert.ok(fs.existsSync(path.join(result.materialPath, "source.md")));
+  assert.ok(fs.existsSync(path.join(result.materialPath, "notes.md")));
+  assert.ok(fs.existsSync(path.join(result.materialPath, "questions.md")));
+  assert.match(
+    fs.readFileSync(path.join(result.materialPath, "README.md"), "utf8"),
+    /Use No Sidequests to teach me from learning-materials\/cbse-class-10-science\//
+  );
 });

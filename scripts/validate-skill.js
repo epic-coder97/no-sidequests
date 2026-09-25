@@ -11,6 +11,7 @@ const REQUIRED_PATHS = [
   "bin/no-sidequests.js",
   "agents",
   "examples",
+  "learning-materials",
   "patterns",
   "references",
   "rubrics",

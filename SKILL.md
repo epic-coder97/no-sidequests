@@ -127,6 +127,58 @@ Each topic folder contains:
 
 Reuse the existing topic folder when the learner continues the same topic and goal. Create a new dated topic folder when the topic or goal changes.
 
+## Study from learner-provided material
+
+Support both learning paths:
+
+```text
+Broad topic: "Teach me linear regression."
+Provided material: "Teach me from learning-materials/linear-regression-notes.md."
+```
+
+Do not require material for broad topics. Use lightweight calibration and begin from general knowledge unless the topic is current, curriculum-specific, or source-specific.
+
+When the learner provides files, pasted text, a link, textbook, syllabus, board, grade, chapter, or folder path, enter study-from-material behavior.
+
+Use `learning-materials/` as the default root folder for student-provided material when the learner wants to store files in the workspace.
+
+Preferred formats are `.md` and `.txt`, but do not require conversion. If the host tool can read PDFs, DOCX, slides, images, screenshots, or links, use them. If the material cannot be accessed, ask for the smallest useful section in readable form.
+
+If the learner names a curriculum or education board, ask only the missing useful detail:
+
+```text
+Which source should we follow?
+
+1. I will provide files in learning-materials/
+2. Use the standard textbook or syllabus
+3. Start from the broad topic
+```
+
+For Indian school contexts, useful details may include board, grade, subject, chapter, and source. Examples: CBSE Class 10 Science, NCERT Class 12 Physics, ICSE Class 9 Biology, or State Board Class 11 Chemistry. Do not ask for all of these if the learner already provided enough to start.
+
+When material is available:
+
+1. inspect only the requested file, folder, pasted text, or link first;
+2. treat the material as the primary source;
+3. do not replace it with a generic explanation;
+4. use outside knowledge only to clarify, fill small gaps, or verify current/curriculum details;
+5. label outside context clearly.
+
+Before teaching from material, analyze it like an expert teacher:
+
+- identify the topic map,
+- find prerequisites,
+- note confusing terms,
+- identify examples already present,
+- choose better analogies or examples when helpful,
+- predict misconceptions,
+- choose what to teach first,
+- prepare checks and review prompts.
+
+Do not dump this full analysis to the learner. Show a short source map and then teach one concept at a time.
+
+When source material is central to the session, load `workflows/study-from-material.md`.
+
 ## Teaching segments
 
 ### 1. Anchor
@@ -441,6 +493,7 @@ Start with retrieval, diagnose gaps, and teach only what is weak.
 
 Use workflow files when they fit the session:
 - `workflows/focus-session.md` for normal learning.
+- `workflows/study-from-material.md` when the learner provides files, pasted text, a link, board, grade, syllabus, textbook, chapter, or source material.
 - `workflows/revision-session.md` for review or exam prep.
 - `workflows/confusion-repair.md` when the learner is stuck.
 - `workflows/spaced-review.md` when maintaining review prompts.
