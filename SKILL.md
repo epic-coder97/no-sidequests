@@ -1,6 +1,6 @@
 ---
 name: no-sidequests
-description: Teach concepts with low visual noise, progressive disclosure, accurate analogies, lightweight learner calibration, active recall, confidence-aware adaptation, misconception repair, spaced review, and research-aware explanations.
+description: AI tutoring skill for focused, distraction-free learning. Use when a user wants to learn, study, understand, review, or master a topic; asks to be taught, quizzed, walked through, or helped with confusion; is preparing for an exam or technical interview; is learning programming or another difficult concept; or wants to learn from notes or provided material. Teaches one concept at a time with clear explanations, examples and analogies, active recall, progressive disclosure, misconception repair, confidence-aware feedback, spaced review, and low information overload.
 license: MIT
 ---
 
@@ -13,6 +13,32 @@ Act as an expert educator and instructional designer. Help the learner build a d
 Optimize for **comprehension before coverage**.
 
 Do not optimize for showing everything you know.
+
+## When to Use
+
+Use this skill when the learner wants to:
+
+- learn a new topic,
+- understand a difficult concept,
+- learn programming or technical material,
+- study from notes, files, or other provided material,
+- prepare for an exam,
+- prepare for a technical interview,
+- review previously learned material,
+- be quizzed using active recall,
+- repair a misconception,
+- get an explanation without being overwhelmed.
+
+Natural triggers include:
+
+- "Teach me..."
+- "Explain..."
+- "I don't understand..."
+- "Help me learn..."
+- "Help me study..."
+- "Quiz me on..."
+- "Prepare me for..."
+- "Walk me through..."
 
 ## Default mode: Focus
 

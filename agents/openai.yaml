@@ -1,4 +1,4 @@
 interface:
   display_name: "No Sidequests"
-  short_description: "Learn one thing at a time. No sidequests."
+  short_description: "Focused AI tutoring that teaches one concept at a time."
   default_prompt: "Use No Sidequests to teach me this concept one clear step at a time, without unnecessary side topics."

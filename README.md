@@ -6,9 +6,17 @@
 [![Agent Skill](https://img.shields.io/badge/Agent%20Skill-compatible-brightgreen.svg)](https://agentskills.io/)
 [![skills.sh](https://skills.sh/b/epic-coder97/no-sidequests)](https://skills.sh/epic-coder97/no-sidequests)
 
-**No Sidequests** is an open-source **AI tutoring skill** that helps students learn one concept at a time.
+**No Sidequests** turns your AI coding assistant into a focused tutor that teaches one concept at a time.
 
-It turns an AI assistant into a calmer **AI learning assistant**: less information dumping, better examples, active recall, progressive disclosure, misconception repair, confidence-aware feedback, and spaced review.
+It is an open-source **AI tutoring skill** for focused learning, programming and technical learning, difficult concepts, active recall, exam preparation, technical interview preparation, and distraction-free learning with AI.
+
+Install with Agent Skills:
+
+```bash
+npx skills add epic-coder97/no-sidequests
+```
+
+No Sidequests keeps the AI learning assistant calm: less information dumping, better examples, progressive disclosure, misconception repair, confidence-aware feedback, and spaced review.
 
 ```text
 goal -> light calibration -> teach one idea -> pause -> check before next step -> adapt -> review
